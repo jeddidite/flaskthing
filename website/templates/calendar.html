@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Select a Technician</h1>
+    <form id="technicianForm">
+        <label for="technician">Technician:</label><br>
+        <select id="technician" name="technician">
+            {% for technician in technicians %}
+                <option value="{{ technician }}">{{ technician }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="appointments">
+        <!-- Appointments will be loaded here -->
+    </div>
+
+    <script>
+    $(document).ready(function(){
+        $("#technicianForm").on("submit", function(event){
+            event.preventDefault();
+            var technician = $("#technician").val();
+            $.ajax({
+                url: "/get_appointments",
+                type: "POST",
+                data: {"technician": technician},
+                success: function(response){
+                    // Update the page with the response
+                    // This depends on what your Flask app is sending back
+                    $("#appointments").html(response);
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
