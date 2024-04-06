@@ -5,5 +5,4 @@ A simple flask project that just has the basic structure to launch  a hello worl
 
 ```bash
 git clone https://github.com/jeddidite/flaskthing
-cd zipzod
 ```
