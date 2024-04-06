@@ -1,9 +1,3 @@
 ## 
-🤝 Contributing
-A simple flask project that just has the basic structure to launch  a hello world page. 
+Contributing
 
-### Clone the repo
-
-```bash
-git clone https://github.com/jeddidite/flaskthing
-```
